@@ -12,16 +12,16 @@ import java.util.Scanner;
  * @author Phucdz
  */
 public class Student {
-	private int ID;
+	private String ID;
 	private String Name;
 	private String Email;
 	private String City;
-	private float GPA;
+	private String GPA;
 
 	public Student() {
 	}
 
-	public Student(int ID, String Name, String Email, String City, float GPA) {
+	public Student(String ID, String Name, String Email, String City, String GPA) {
 		this.ID = ID;
 		this.Name = Name;
 		this.Email = Email;
@@ -29,11 +29,11 @@ public class Student {
 		this.GPA = GPA;
 	}
 
-	public int getID() {
+	public String getID() {
 		return ID;
 	}
 
-	public void setID(int ID) {
+	public void setID(String ID) {
 		this.ID = ID;
 	}
 
@@ -61,18 +61,18 @@ public class Student {
 		this.City = City;
 	}
 
-	public float getGPA() {
+	public String getGPA() {
 		return GPA;
 	}
 
-	public void setGPA(float GPA) {
+	public void setGPA(String GPA) {
 		this.GPA = GPA;
 	}
 	
 	public void InputInfomation() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Input Student ID:");
-		ID = input.nextInt();
+		ID = input.next();
 		System.out.println("Input Student Name:");
 		Name = input.next();
 		System.out.println("Input Student Email:");
@@ -80,7 +80,7 @@ public class Student {
 		System.out.println("Input Student City:");
 		City = input.next();
 		System.out.println("Input Student GPA:");
-		GPA = input.nextFloat();
+		GPA = input.next();
 	}
 	
 }
