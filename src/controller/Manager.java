@@ -47,6 +47,7 @@ public class Manager {
 		return student;
 	}
 	public static int InsertStudent(Student student) throws Exception {
+		if(getStudentByID(student.getID()) == null) {
 		Connection connection = controller.ConnectDatabaseMySQL.connectMySQLSerVer();
 		String query = "Insert Into Student Values(?,?,?,?,?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -56,5 +57,7 @@ public class Manager {
 		preparedStatement.setString(4, student.getCity());
 		preparedStatement.setString(5, student.getGPA());
 		return preparedStatement.executeUpdate();
+	}
+		return 0;
 	}
 }
