@@ -6,6 +6,7 @@
 package controller;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -30,5 +31,30 @@ public class Manager {
 		statment.close();
 		connection.close();
 		return listStudent;	
+	}
+	public static Student getStudentByID(String ID) throws Exception {
+		Student student = null;
+		Connection connection = controller.ConnectDatabaseMySQL.connectMySQLSerVer();
+		String query = "select ID, Name, Email, City, GPA from Student where ID=?";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		ResultSet result = preparedStatement.executeQuery();
+		if(result.next()) {
+			student = new Student(result.getString("ID"), result.getString("Name"), result.getString("Email"), result.getString("City"), result.getString("GPA"));
+		}
+		result.close();
+		preparedStatement.close();
+		connection.close();
+		return student;
+	}
+	public static int InsertStudent(Student student) throws Exception {
+		Connection connection = controller.ConnectDatabaseMySQL.connectMySQLSerVer();
+		String query = "Insert Into Student Values(?,?,?,?,?)";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setString(1, student.getID());
+		preparedStatement.setString(2, student.getName());
+		preparedStatement.setString(3, student.getEmail());
+		preparedStatement.setString(4, student.getCity());
+		preparedStatement.setString(5, student.getGPA());
+		return preparedStatement.executeUpdate();
 	}
 }
