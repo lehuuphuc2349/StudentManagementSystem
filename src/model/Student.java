@@ -72,15 +72,15 @@ public class Student {
 	public void InputInfomation() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Input Student ID:");
-		ID = input.next();
+		ID = input.nextLine();
 		System.out.println("Input Student Name:");
-		Name = input.next();
+		Name = input.nextLine();
 		System.out.println("Input Student Email:");
-		Email = input.next();
+		Email = input.nextLine();
 		System.out.println("Input Student City:");
-		City = input.next();
+		City = input.nextLine();
 		System.out.println("Input Student GPA:");
-		GPA = input.next();
+		GPA = input.nextLine();
 	}
 	
 }

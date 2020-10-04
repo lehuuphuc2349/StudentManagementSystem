@@ -22,7 +22,7 @@ public class StudentManagement {
 		do {
 			if(controller.Manager.getStudentByID(student.getID()) != null) {
 				System.out.println("Id IS EXIST, PLEASE INPUT AGAIN!!!");
-				student.setID(input.next());
+				student.setID(input.nextLine());
 			} else {
 				break;
 			}
